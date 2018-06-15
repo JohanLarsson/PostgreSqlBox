@@ -41,6 +41,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\IDisposableAnalyzers.2.0.2.2\analyzers\dotnet\cs\Gu.Roslyn.AnalyzerExtensions.dll" />
+    <Analyzer Include="..\packages\IDisposableAnalyzers.2.0.2.2\analyzers\dotnet\cs\Gu.Roslyn.CodeFixExtensions.dll" />
+    <Analyzer Include="..\packages\IDisposableAnalyzers.2.0.2.2\analyzers\dotnet\cs\IDisposableAnalyzers.CodeFixes.dll" />
+    <Analyzer Include="..\packages\IDisposableAnalyzers.2.0.2.2\analyzers\dotnet\cs\IDisposableAnalyzers.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
