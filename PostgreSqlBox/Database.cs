@@ -1,26 +1,26 @@
 ﻿namespace PostgreSqlBox
 {
+    using System.Configuration;
     using Microsoft.EntityFrameworkCore;
-    using Npgsql;
 
     public class Database : DbContext
     {
+        private static bool isMigrated;
+
         public Database()
         {
-            this.Database.EnsureCreated();
+            if (!isMigrated)
+            {
+                this.Database.Migrate();
+                isMigrated = true;
+            }
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder builder)
-        {
-            var connectionStringBuilder = new NpgsqlConnectionStringBuilder
-                          {
-                              Host = "localhost",
-                              Database = "test",
-                          };
-
-            builder.UseNpgsql(connectionStringBuilder.ToString());
-        }
- 
         public DbSet<Foo> Foos { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseNpgsql(ConfigurationManager.ConnectionStrings["Database"].ConnectionString);
+        }
     }
 }
