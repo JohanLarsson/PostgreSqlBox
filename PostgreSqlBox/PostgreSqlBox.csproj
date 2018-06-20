@@ -128,6 +128,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SelectAllBenchmark.cs" />
+    <Compile Include="SelectByIndexBenchmark.cs" />
     <Compile Include="Database.cs" />
     <Compile Include="Foo.cs" />
     <Compile Include="Migrations\20180616091443_InitialCreate.cs" />
