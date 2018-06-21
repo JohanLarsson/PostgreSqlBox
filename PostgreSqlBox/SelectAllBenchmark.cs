@@ -12,6 +12,7 @@
     {
         internal static void Run()
         {
+            Console.WriteLine(nameof(SelectAllBenchmark));
             using (var db = new Database())
             {
                 db.Database.ExecuteSqlCommand("TRUNCATE \"Foos\" RESTART IDENTITY");
@@ -23,18 +24,15 @@
                 db.SaveChanges();
             }
 
-            Console.WriteLine("EF");
             Ef();
-            Console.WriteLine("EF");
             Ef();
-            Console.WriteLine("ADO");
             Ado();
-            Console.WriteLine("ADO");
             Ado();
         }
 
         internal static void Ef()
         {
+            Console.WriteLine("EF");
             using (var db = new Database())
             {
                 var sw = Stopwatch.StartNew();
@@ -51,6 +49,7 @@
 
         internal static void Ado()
         {
+            Console.WriteLine("ADO");
             using (var db = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["Database"].ConnectionString))
             {
                 var sw = Stopwatch.StartNew();
