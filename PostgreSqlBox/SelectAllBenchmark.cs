@@ -41,6 +41,11 @@
                 var foos = db.Foos.ToList();
                 sw.Stop();
                 Console.WriteLine($"Selecting {foos.Count} items took {sw.ElapsedMilliseconds:N1} ms.");
+
+                sw.Restart();
+                foos = db.Foos.ToList();
+                sw.Stop();
+                Console.WriteLine($"Selecting {foos.Count} items took {sw.ElapsedMilliseconds:N1} ms.");
             }
         }
 
@@ -51,6 +56,11 @@
                 var sw = Stopwatch.StartNew();
                 db.Open();
                 var foos = db.Select().ToList();
+                sw.Stop();
+                Console.WriteLine($"Selecting {foos.Count} items took {sw.ElapsedMilliseconds:N1} ms.");
+
+                sw.Restart();
+                foos = db.Select().ToList();
                 sw.Stop();
                 Console.WriteLine($"Selecting {foos.Count} items took {sw.ElapsedMilliseconds:N1} ms.");
             }
