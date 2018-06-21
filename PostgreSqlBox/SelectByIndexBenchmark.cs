@@ -40,22 +40,22 @@
                 var sw = Stopwatch.StartNew();
                 var first = db.Foos.First(x => x.Text == "1");
                 sw.Stop();
-                Console.WriteLine($"Selecting one item took {sw.ElapsedMilliseconds:N1} ms.");
-
+                Console.WriteLine($"Selecting item {first.Id} took {sw.ElapsedMilliseconds:N1} ms.");
+                
                 sw.Restart();
                 first = db.Foos.First(x => x.Text == "2");
                 sw.Stop();
-                Console.WriteLine($"Selecting one item took {sw.ElapsedMilliseconds:N1} ms.");
+                Console.WriteLine($"Selecting item {first.Id} took {sw.ElapsedMilliseconds:N1} ms.");
 
                 sw.Restart();
                 first = db.Foos.First(x => x.Text == "3");
                 sw.Stop();
-                Console.WriteLine($"Selecting one item took {sw.ElapsedMilliseconds:N1} ms.");
+                Console.WriteLine($"Selecting item {first.Id} took {sw.ElapsedMilliseconds:N1} ms.");
 
                 sw.Restart();
                 first = db.Foos.First(x => x.Text == "4");
                 sw.Stop();
-                Console.WriteLine($"Selecting one item took {sw.ElapsedMilliseconds:N1} ms.");
+                Console.WriteLine($"Selecting item {first.Id} took {sw.ElapsedMilliseconds:N1} ms.");
             }
         }
 
@@ -66,16 +66,24 @@
                 var sw = Stopwatch.StartNew();
                 db.Open();
                 var match = db.Select(1);
-                Console.WriteLine($"Selecting one item took {sw.ElapsedMilliseconds:N1} ms.");
+                sw.Stop();
+                Console.WriteLine($"Selecting item {match.Id} took {sw.ElapsedMilliseconds:N1} ms.");
+                sw.Restart();
 
                 match = db.Select(2);
-                Console.WriteLine($"Selecting one item took {sw.ElapsedMilliseconds:N1} ms.");
+                sw.Stop();
+                Console.WriteLine($"Selecting item {match.Id} took {sw.ElapsedMilliseconds:N1} ms.");
+                sw.Restart();
 
                 match = db.Select(3);
-                Console.WriteLine($"Selecting one item took {sw.ElapsedMilliseconds:N1} ms.");
+                sw.Stop();
+                Console.WriteLine($"Selecting item {match.Id} took {sw.ElapsedMilliseconds:N1} ms.");
+                sw.Restart();
 
                 match = db.Select(4);
-                Console.WriteLine($"Selecting one item took {sw.ElapsedMilliseconds:N1} ms.");
+                sw.Stop();
+                Console.WriteLine($"Selecting item {match.Id} took {sw.ElapsedMilliseconds:N1} ms.");
+                sw.Restart();
             }
         }
 
